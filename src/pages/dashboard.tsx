@@ -42,7 +42,6 @@ export default function Dashboard() {
     <span className="text-base sm:text-lg md:text-xl lg:text-xl">chatbot</span>
   </div>
 </button>
-
             <Button variant="ghost" className="gap-2">
               <Avatar className="h-6 w-6">
                 <AvatarImage src="https://github.com/shadcn.png" />
