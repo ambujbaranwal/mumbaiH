@@ -34,7 +34,7 @@ export function Navigation({ className }: { className?: string }) {
       )}
     >
       <div className="flex h-16 items-center px-2">
-        <h1 className="text-xl font-bold">WealthWise AI</h1>
+        <h1 className="text-xl font-bold">Qubit AI</h1>
       </div>
       <div className="space-y-4">
         <div className="space-y-1">
