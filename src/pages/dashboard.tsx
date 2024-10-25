@@ -32,9 +32,7 @@ export default function Dashboard() {
                 />
               </div>
             </div>
-            <Button variant="ghost" size="icon">
-              <Bell className="h-4 w-4" />
-            </Button>
+  
             <Button variant="ghost" className="gap-2">
               <Avatar className="h-6 w-6">
                 <AvatarImage src="https://github.com/shadcn.png" />

@@ -33,9 +33,15 @@ export function Navigation({ className }: { className?: string }) {
         className
       )}
     >
-      <div className="flex h-16 items-center px-2">
-        <h1 className="text-xl font-bold">Qubit AI</h1>
-      </div>
+<div className="flex h-16 items-center px-2">
+<img 
+    src="public\logo.jpeg" 
+    alt="Logo" 
+    className="w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-9 lg:h-9 object-contain rounded-full m-2" 
+/>
+
+  <h1 className="text-xl font-bold">Qubit AI</h1>
+</div>
       <div className="space-y-4">
         <div className="space-y-1">
           {navigation.map((item) => (
