@@ -32,7 +32,17 @@ export default function Dashboard() {
                 />
               </div>
             </div>
-  
+            <button style={{ borderRadius: '.2rem' }} className="bg-blue-500 hover:bg-blue-700 text-white rounded h-9 w-25 flex items-center justify-center">
+  <div className="flex items-center">
+    <img 
+      src="bot.png" 
+      alt="Logo" 
+      className="w-4 h-4 sm:w-8 sm:h-4 md:w-4 md:h-4 lg:w-9 lg:h-9 object-contain rounded-full mr-1" 
+    />
+    <span className="text-base sm:text-lg md:text-xl lg:text-xl">chatbot</span>
+  </div>
+</button>
+
             <Button variant="ghost" className="gap-2">
               <Avatar className="h-6 w-6">
                 <AvatarImage src="https://github.com/shadcn.png" />
