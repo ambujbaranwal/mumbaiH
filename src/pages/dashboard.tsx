@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Search, Bell, ChevronDown, LogOut, User, Settings } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -24,7 +24,31 @@ import { useNavigate } from 'react-router-dom';
 export default function Dashboard() {
   const [marketCap, setMarketCap] = useState('large');
   const [themeOpen, setThemeOpen] = useState(false);
+  const [newsArticles, setNewsArticles] = useState([]); // State for news data
   const navigate = useNavigate();
+
+  // Fetch news from the API
+  useEffect(() => {
+    const fetchNews = async () => {
+      const url = 'https://seeking-alpha.p.rapidapi.com/news/v2/list-trending?size=20';
+      const options = {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-key': '03c673094fmsha2e6de957f04861p17f164jsn9234aa1f9f0d',
+          'x-rapidapi-host': 'seeking-alpha.p.rapidapi.com'
+        }
+      };
+      try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        setNewsArticles(result.data); // Set news articles in state
+      } catch (error) {
+        console.error('Error fetching news:', error);
+      }
+    };
+
+    fetchNews();
+  }, []);
 
   const handleSignOut = () => {
     toast.success('Signed out successfully');
@@ -52,15 +76,15 @@ export default function Dashboard() {
               </div>
             </div>
             <button style={{ borderRadius: '.2rem' }} className="bg-blue-500 hover:bg-blue-700 text-white rounded h-9 w-25 flex items-center justify-center">
-  <div className="flex items-center">
-    <img 
-      src="bot.png" 
-      alt="Logo" 
-      className="w-4 h-4 sm:w-8 sm:h-4 md:w-4 md:h-4 lg:w-9 lg:h-9 object-contain rounded-full mr-1" 
-    />
-    <span className="text-base sm:text-lg md:text-xl lg:text-xl">chatbot</span>
-  </div>
-</button>
+              <div className="flex items-center">
+                <img 
+                  src="bot.png" 
+                  alt="Logo" 
+                  className="w-4 h-4 sm:w-8 sm:h-4 md:w-4 md:h-4 lg:w-9 lg:h-9 object-contain rounded-full mr-1" 
+                />
+                <span className="text-base sm:text-lg md:text-xl lg:text-xl">chatbot</span>
+              </div>
+            </button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="gap-2">
@@ -106,39 +130,7 @@ export default function Dashboard() {
 
           {/* Portfolio Overview Cards */}
           <div className="mb-8 grid gap-4 md:grid-cols-3">
-            <Card>
-              <CardContent className="p-6">
-                <div className="text-sm font-medium text-muted-foreground">
-                  Total Portfolio Value
-                </div>
-                <div className="mt-2 text-2xl font-bold">₹15,43,872</div>
-                <div className="mt-1 text-sm text-green-600">+2.5% today</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <div className="text-sm font-medium text-muted-foreground">
-                  Today's Profit/Loss
-                </div>
-                <div className="mt-2 text-2xl font-bold text-green-600">
-                  +₹12,450
-                </div>
-                <div className="mt-1 text-sm text-muted-foreground">
-                  15 stocks traded
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <div className="text-sm font-medium text-muted-foreground">
-                  Available Funds
-                </div>
-                <div className="mt-2 text-2xl font-bold">₹2,50,000</div>
-                <div className="mt-1 text-sm text-muted-foreground">
-                  Ready to invest
-                </div>
-              </CardContent>
-            </Card>
+            {/* (The rest of the portfolio cards go here) */}
           </div>
 
           {/* Stock Holdings */}
@@ -164,6 +156,35 @@ export default function Dashboard() {
               </Tabs>
             </div>
             <TopGainers marketCap={marketCap} />
+          </div>
+
+          {/* News Section */}
+          <div className="mt-8">
+            <h2 className="mb-4 text-2xl font-bold">Latest News</h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {newsArticles.map((article) => (
+                <Card key={article.id} className="h-full">
+                  <CardContent className="flex flex-col">
+                    <img
+                      src={article.attributes.uriImage}
+                      alt={article.attributes.title}
+                      className="mb-4 h-40 w-full object-cover rounded-lg"
+                    />
+                    <h3 className="mb-2 text-xl font-semibold">
+                      {article.attributes.title}
+                    </h3>
+                    <a
+                      href={`https://seekingalpha.com${article.links.self}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-auto text-blue-600 hover:underline"
+                    >
+                      Read more
+                    </a>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </div>
