@@ -31,7 +31,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
       )}
       <Card
         className={cn(
-          'max-w-[85%] break-words px-3 py-2 text-sm',
+          'max-w-[95%] break-words px-3 py-2 text-sm',
           {
             'bg-gradient-to-r from-blue-500 to-purple-500 text-white':
               !isBot,

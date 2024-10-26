@@ -53,7 +53,7 @@ export default function Profile() {
           </div>
 
           {/* Investment Stats */}
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {userProfile.stats.map((stat) => (
               <Card key={stat.label}>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
