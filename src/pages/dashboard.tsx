@@ -77,7 +77,7 @@ export default function Dashboard() {
             </div>
 
             {/* Chatbot Button */}
-            <button style={{ borderRadius: '.2rem' }} className="bg-blue-500 hover:bg-blue-700 text-white rounded h-9 w-25 flex items-center justify-center">
+            {/* <button style={{ borderRadius: '.2rem' }} className="bg-blue-500 hover:bg-blue-700 text-white rounded h-9 w-25 flex items-center justify-center">
               <div className="flex items-center">
                 <img 
                   src="bot.png" 
@@ -86,7 +86,7 @@ export default function Dashboard() {
                 />
                 <span className="text-base sm:text-lg md:text-xl lg:text-xl">chatbot</span>
               </div>
-            </button>
+            </button> */}
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
