@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Bell, ChevronDown } from 'lucide-react';
+import { Search, Bell, ChevronDown, LogOut, User, Settings } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -8,9 +8,28 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { StockTable } from '@/components/stock-table';
 import { TopGainers } from '@/components/top-gainers';
 import { Navigation } from '@/components/navigation';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { toast } from 'sonner';
+import { ThemeToggle } from '@/components/theme-toggle';
+import { useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
   const [marketCap, setMarketCap] = useState('large');
+  const [themeOpen, setThemeOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    toast.success('Signed out successfully');
+    // Add your sign-out logic here
+  };
 
   return (
     <div className="flex h-screen">
@@ -42,14 +61,37 @@ export default function Dashboard() {
     <span className="text-base sm:text-lg md:text-xl lg:text-xl">chatbot</span>
   </div>
 </button>
-            <Button variant="ghost" className="gap-2">
-              <Avatar className="h-6 w-6">
-                <AvatarImage src="https://github.com/shadcn.png" />
-                <AvatarFallback>JD</AvatarFallback>
-              </Avatar>
-              <span className="hidden lg:inline-block">John Doe</span>
-              <ChevronDown className="h-4 w-4" />
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="gap-2">
+                  <Avatar className="h-6 w-6">
+                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarFallback>JD</AvatarFallback>
+                  </Avatar>
+                  <span className="hidden lg:inline-block">John Doe</span>
+                  <ChevronDown className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem onClick={() => navigate('/profile')}>
+                    <User className="mr-2 h-4 w-4" />
+                    Profile
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setThemeOpen(true)}>
+                    <Settings className="mr-2 h-4 w-4" />
+                    Settings
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleSignOut}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Sign out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </header>
 
@@ -125,6 +167,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+      <ThemeToggle />
     </div>
   );
 }

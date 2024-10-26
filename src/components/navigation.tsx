@@ -35,7 +35,7 @@ export function Navigation({ className }: { className?: string }) {
     >
 <div className="flex h-16 items-center px-2">
 <img 
-    src="public\logo.jpeg" 
+    src="logo.jpeg" 
     alt="Logo" 
     className="w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-9 lg:h-9 object-contain rounded-full m-2" 
 />
