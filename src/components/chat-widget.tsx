@@ -102,23 +102,14 @@ export function ChatWidget() {
         className="w-full border-l-0 p-0 sm:max-w-[400px] sm:border-l"
       >
         <SheetHeader className="border-b px-4 py-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Bot className="h-5 w-5" />
-              <SheetTitle>Qubit AI</SheetTitle>
-            </div>
-            <div className="flex gap-2">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={handleClearChat}
-                className="h-8 w-8"
-              >
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </SheetHeader>
+  <div className="flex items-center justify-between">
+    <div className="flex items-center gap-2">
+      <Bot className="h-5 w-5" />
+      <SheetTitle>Qubit AI</SheetTitle>
+    </div>
+
+  </div>
+</SheetHeader>
 
         <div className="flex h-[calc(100vh-8rem)] flex-col gap-4 p-4">
           <ScrollArea className="flex-1 rounded-lg bg-muted/50 p-4" ref={scrollAreaRef}>
@@ -165,7 +156,7 @@ export function ChatWidget() {
             </div>
           </ScrollArea>
 
-          <div className="space-y-4">
+          <div className="space-y-2">
             <QuickReplies onSelect={handleSendMessage} />
             <ChatInput onSend={handleSendMessage} />
           </div>

@@ -46,41 +46,25 @@ export function ChatInput({ onSend }: ChatInputProps) {
           rows={1}
         />
         <Popover>
-          <PopoverTrigger asChild>
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              className="absolute bottom-1 right-1 h-8 w-8 rounded-full"
-            >
-              <Smile className="h-5 w-5" />
-            </Button>
-          </PopoverTrigger>
+          
           <PopoverContent
             className="w-80 border-none p-0"
             side="top"
             align="end"
           >
-            <Picker
-              data={data}
-              onEmojiSelect={(emoji: any) => {
-                setMessage((prev) => prev + emoji.native);
-                textareaRef.current?.focus();
-              }}
-            />
+            
           </PopoverContent>
         </Popover>
       </div>
       <Button
-  type="submit"
-  size="icon"
-  disabled={!message.trim()}
-  className="flex items-center justify-center p-2 bg-blue-500 rounded-full hover:bg-blue-600 disabled:bg-gray-400"
-  title="Send Message"
->
-  <SendHorizontal className="h-5 w-5 text-white" />
-</Button>
-
+        type="submit"
+        size="icon"
+        disabled={!message.trim()}
+        className="flex items-center justify-center p-2 bg-blue-500 rounded-full hover:bg-blue-600 disabled:bg-gray-400"
+        title="Send Message"
+      >
+        <SendHorizontal className="h-5 w-5 text-white" />
+      </Button>
     </form>
   );
 }
