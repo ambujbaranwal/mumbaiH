@@ -3,6 +3,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Dashboard from '@/pages/dashboard';
 import Profile from '@/pages/profile';
+import { ChatWidget } from '@/components/chat-widget';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
+          <ChatWidget />
         </main>
         <Toaster />
       </ThemeProvider>
