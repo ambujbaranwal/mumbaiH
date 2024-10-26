@@ -156,7 +156,7 @@ export function ChatWidget() {
             </div>
           </ScrollArea>
 
-          <div className="space-y-2">
+          <div className="space-y-0">
             <QuickReplies onSelect={handleSendMessage} />
             <ChatInput onSend={handleSendMessage} />
           </div>

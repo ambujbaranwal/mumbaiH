@@ -147,7 +147,7 @@ export default function Dashboard() {
                 onValueChange={setMarketCap}
                 className="w-[400px]"
               >
-                <TabsList className="grid w-full grid-cols-3">
+                <TabsList className="grid w-full grid-cols-3 gap-4">
                   <TabsTrigger value="large">Large Cap</TabsTrigger>
                   <TabsTrigger value="mid">Mid Cap</TabsTrigger>
                   <TabsTrigger value="small">Small Cap</TabsTrigger>

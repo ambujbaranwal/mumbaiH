@@ -1,9 +1,8 @@
 import { useState, useRef } from 'react';
-import { SendHorizontal, Smile } from 'lucide-react';
+import { SendHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import data from '@emoji-mart/data';
-import Picker from '@emoji-mart/react';
+
 import {
   Popover,
   PopoverContent,
